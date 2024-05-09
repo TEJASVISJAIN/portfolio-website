@@ -1,6 +1,6 @@
-import React from 'react'
-import HeroImage from '../assets/heroImage.png'
-import {MdOutlineKeyboardArrowRight} from 'react-icons/md'
+import React from "react";
+import HeroImage from "../assets/heroImage.png";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-scroll";
 
 function Home() {
@@ -15,7 +15,9 @@ function Home() {
             I'm a Full Stack Developer
           </h2>
           <p className="text-gray-500 py-4 max-w-md">
-            I have hands-on experience in building and designing software. Currently working on creating cross platform mobile apps with React Native
+            I have hands-on experience in building software for web and mobile
+            applications. Currently engaged in building something cool at
+            Awiros!
           </p>
 
           <div>
@@ -42,7 +44,7 @@ function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

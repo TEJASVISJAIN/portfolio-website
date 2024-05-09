@@ -8,9 +8,16 @@ import github from "../assets/github.png";
 import tailwind from "../assets/tailwind.png";
 import postman from "../assets/postman.png";
 import gcp from "../assets/gcp.webp";
+import angular from "../assets/angular.png";
 
 const Experience = () => {
   const techs = [
+    {
+      id: 0,
+      src: angular,
+      title: "Angular",
+      style: "shadow-red-500",
+    },
     {
       id: 1,
       src: html,
@@ -59,7 +66,6 @@ const Experience = () => {
       title: "Google Cloud Platform",
       style: "shadow-red-500",
     },
-
   ];
 
   return (
