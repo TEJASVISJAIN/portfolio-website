@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import noResponse from "../assets/postman_no_response.png";
+import noCookies from "../assets/no_cookies.png";
+import noTests from "../assets/no_tests.png";
+
 const PostmanComponent = () => {
   const [method, setMethod] = useState("GET");
   const [url, setUrl] = useState("");
@@ -18,6 +22,8 @@ const PostmanComponent = () => {
     "Settings",
   ];
   let options2 = ["Body", "Cookies", "Headers", "Test Results"];
+  const [optionTwoType, setOptionTwoType] = useState(options2[0]);
+  const [loader, setLoader] = useState(false);
   const [optionType, setOptionType] = useState(options[0]);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +37,11 @@ const PostmanComponent = () => {
       };
 
       const res = await axios(config);
+      setLoader(true);
+      // setTimeout(() => {
       setResponse(res.data);
+      // }, 2000);
+      setLoader(false);
     } catch (err) {
       setResponse(err.response.data);
     }
@@ -135,40 +145,93 @@ const PostmanComponent = () => {
             <div>Settings</div> */}
           </div>
 
-          <div class="h-8 border-b border-[#3b3b3b] cursor-n-resize"></div>
+          <div>
+            <div className="h-8 border-b border-[#3b3b3b] cursor-n-resize"></div>
 
-          <div
-            class="flex flex-row gap-4 py-2 items-center text-xs"
-            style={{ color: "#c9c9c9" }}
-          >
-            <span class="border-b-2 pb-1  border-orange-500">Body</span>
-            <span>Cookies</span>
-            <span>Headers (11)</span>
-            <span>Test Results</span>
+            {!response && <div style={{ fontSize: "14px" }}>Response</div>}
           </div>
+
+          {response && (
+            <div
+              class="flex flex-row gap-4 py-2 items-center text-xs"
+              style={{ color: "#c9c9c9", flexWrap: "wrap" }}
+            >
+              {options2.map((ele, id) => {
+                return (
+                  <div
+                    key={ele}
+                    className={`px-4 py-2 ${
+                      ele == optionTwoType
+                        ? "border-b-2 pb-1  border-orange-500"
+                        : ""
+                    }`}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setOptionTwoType(ele)}
+                  >
+                    {ele}
+                  </div>
+                );
+              })}
+            </div>
+          )}
 
           <div
             class="flex flex-row my-2 py-0 cursor-pointer bg-[#3b3b3b] bg-opacity-70 rounded-md w-max items-center text-xs overflow-hidden"
             style={{ color: "#c9c9c9" }}
           >
-            {editorType.map((ele, idx) => (
-              <span
-                key={ele} // Add a unique key for each element
-                className={`px-4 py-2 ${
-                  ele == EditorType ? "bg-[#4e4e4e]" : ""
-                }`}
-                onClick={() => setEditorType(ele)}
-              >
-                {ele}
-              </span>
-            ))}
+            {response &&
+              optionTwoType == "Body" &&
+              editorType.map((ele, idx) => (
+                <span
+                  key={ele} // Add a unique key for each element
+                  className={`px-4 py-2 ${
+                    ele == EditorType ? "bg-[#4e4e4e]" : ""
+                  }`}
+                  onClick={() => setEditorType(ele)}
+                >
+                  {ele}
+                </span>
+              ))}
 
             {/* <span class="px-4 py-2 bg-[#4e4e4e]">Pretty</span>
             <span class="px-4 py-2">Raw</span>
             <span class="px-4 py-2">Preview</span>
             <span class="px-4 py-2">Visualise</span> */}
           </div>
-          <div style={{ height: "30vh", overflow: "scroll" }}>
+          <div
+            style={{
+              height: "30vh",
+              overflow: "scroll",
+            }}
+          >
+            {!response && loader && (
+              <div
+                className="bg-[#242424] rounded-lg p-4"
+                style={{
+                  backgroundImage: `url(${noResponse})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "contain",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  opacity: "0.3",
+                }}
+              >
+                <pre
+                  className="text-gray-300 font-mono whitespace-pre-wrap relative"
+                  style={{
+                    fontSize: "0.9rem",
+                    lineHeight: "1.5",
+                    counterReset: "line",
+                    opacity: "0.5", // Adjust the opacity as needed
+                  }}
+                >
+                  <div>Sending request...</div>
+                  {/* Your code for the pre element */}
+                </pre>
+              </div>
+            )}
             {!response && (
               <div className="bg-[#242424] rounded-lg p-4">
                 <pre
@@ -177,9 +240,12 @@ const PostmanComponent = () => {
                     fontSize: "0.9rem",
                     lineHeight: "1.5",
                     counterReset: "line",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  <code>
+                  {/* <code>
                     {initialResponseArea.map((line, index) => (
                       <span
                         key={index}
@@ -194,11 +260,79 @@ const PostmanComponent = () => {
                         </span>{" "}
                       </span>
                     ))}
-                  </code>
+                  </code> */}
+                  <img src={noResponse} />
                 </pre>
               </div>
             )}
-            {response && (
+            {optionTwoType == "Cookies" && (
+              <div className="bg-[#242424] rounded-lg p-4">
+                <pre
+                  className="text-gray-300 font-mono whitespace-pre-wrap relative"
+                  style={{
+                    fontSize: "0.9rem",
+                    lineHeight: "1.5",
+                    counterReset: "line",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  {/* <code>
+                    {initialResponseArea.map((line, index) => (
+                      <span
+                        key={index}
+                        className="block relative pl-8"
+                        style={{ counterIncrement: "line" }}
+                      >
+                        <span
+                          className="absolute left-0 text-gray-500 select-none"
+                          style={{ width: "2rem", userSelect: "none" }}
+                        >
+                          {index + 1}
+                        </span>{" "}
+                      </span>
+                    ))}
+                  </code> */}
+                  <img src={noCookies} />
+                </pre>
+              </div>
+            )}
+            {optionTwoType.toLowerCase() == "test results" && (
+              <div className="bg-[#242424] rounded-lg p-4">
+                <pre
+                  className="text-gray-300 font-mono whitespace-pre-wrap relative"
+                  style={{
+                    fontSize: "0.9rem",
+                    lineHeight: "1.5",
+                    counterReset: "line",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  {/* <code>
+                    {initialResponseArea.map((line, index) => (
+                      <span
+                        key={index}
+                        className="block relative pl-8"
+                        style={{ counterIncrement: "line" }}
+                      >
+                        <span
+                          className="absolute left-0 text-gray-500 select-none"
+                          style={{ width: "2rem", userSelect: "none" }}
+                        >
+                          {index + 1}
+                        </span>{" "}
+                      </span>
+                    ))}
+                  </code> */}
+                  <img src={noTests} />
+                </pre>
+              </div>
+            )}
+
+            {response && optionTwoType == "Body" && (
               <div className="bg-[#242424] rounded-lg p-4">
                 <pre
                   className="text-gray-300 font-mono whitespace-pre-wrap relative"
