@@ -7,10 +7,12 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import PostmanComponent from "./components/Postman";
 import Education from "./components/Education";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
     <div className="App">
+      <Analytics />
       <Navbar />
       <Home />
       <About />
