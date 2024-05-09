@@ -8,6 +8,17 @@ const PostmanComponent = () => {
   const [headers, setHeaders] = useState("");
   const [response, setResponse] = useState(null);
   const initialResponseArea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  let options = [
+    "Params",
+    "Authorization",
+    "Headers",
+    "Body",
+    "Tests",
+    "Settings",
+  ];
+  let options2 = ["Body", "Cookies", "Headers", "Test Results"];
+  const [optionType, setOptionType] = useState(options[0]);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -98,14 +109,30 @@ const PostmanComponent = () => {
           </div>
           <div
             class="flex flex-row gap-4 py-2 items-center text-xs select-none"
-            style={{ color: "#c9c9c9" }}
+            style={{ color: "#c9c9c9", flexWrap: "wrap" }}
           >
-            <span class="border-b-2 pb-1  border-orange-500">Params</span>
-            <span>Authorization</span>
-            <span>Headers</span>
-            <span>Body</span>
-            <span>Tests</span>
-            <span>Settings</span>
+            {options.map((ele, id) => {
+              return (
+                <div
+                  key={ele} // Add a unique key for each element
+                  className={`px-4 py-2 ${
+                    ele == optionType
+                      ? "border-b-2 pb-1  border-orange-500"
+                      : ""
+                  }`}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setOptionType(ele)}
+                >
+                  {ele}
+                </div>
+              );
+            })}
+            {/* <div class="border-b-2 pb-1  border-orange-500">Params</div>
+            <div>Authorization</div>
+            <div>Headers</div>
+            <div>Body</div>
+            <div>Tests</div>
+            <div>Settings</div> */}
           </div>
 
           <div class="h-8 border-b border-[#3b3b3b] cursor-n-resize"></div>
