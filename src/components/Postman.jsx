@@ -7,7 +7,9 @@ import noTests from "../assets/no_tests.png";
 
 const PostmanComponent = () => {
   const [method, setMethod] = useState("GET");
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(
+    "https://66336b1bf7d50bbd9b495359.mockapi.io/random/hello"
+  );
   const [body, setBody] = useState("");
   const [headers, setHeaders] = useState("");
   const [response, setResponse] = useState(null);
@@ -332,38 +334,56 @@ const PostmanComponent = () => {
               </div>
             )}
 
-            {response && optionTwoType == "Body" && (
-              <div className="bg-[#242424] rounded-lg p-4">
-                <pre
-                  className="text-gray-300 font-mono whitespace-pre-wrap relative"
-                  style={{
-                    fontSize: "0.9rem",
-                    lineHeight: "1.5",
-                    counterReset: "line",
-                  }}
-                >
-                  <code>
-                    {JSON.stringify(response, null, 2)
-                      .split("\n")
-                      .map((line, index) => (
-                        <span
-                          key={index}
-                          className="block relative pl-8"
-                          style={{ counterIncrement: "line" }}
-                        >
+            {response &&
+              optionTwoType == "Body" &&
+              EditorType.toLowerCase() == "pretty" && (
+                <div className="bg-[#242424] rounded-lg p-4">
+                  <pre
+                    className="text-gray-300 font-mono whitespace-pre-wrap relative"
+                    style={{
+                      fontSize: "0.9rem",
+                      lineHeight: "1.5",
+                      counterReset: "line",
+                    }}
+                  >
+                    <code>
+                      {JSON.stringify(response, null, 2)
+                        .split("\n")
+                        .map((line, index) => (
                           <span
-                            className="absolute left-0 text-gray-500 select-none"
-                            style={{ width: "2rem", userSelect: "none" }}
+                            key={index}
+                            className="block relative pl-8"
+                            style={{ counterIncrement: "line" }}
                           >
-                            {index + 1}
+                            <span
+                              className="absolute left-0 text-gray-500 select-none"
+                              style={{ width: "2rem", userSelect: "none" }}
+                            >
+                              {index + 1}
+                            </span>
+                            {line}
                           </span>
-                          {line}
-                        </span>
-                      ))}
-                  </code>
-                </pre>
-              </div>
-            )}
+                        ))}
+                    </code>
+                  </pre>
+                </div>
+              )}
+            {response &&
+              optionTwoType == "Body" &&
+              EditorType.toLowerCase() == "raw" && (
+                <div className="bg-[#242424] rounded-lg p-4">
+                  <pre
+                    className="text-gray-300 font-mono whitespace-pre-wrap relative"
+                    style={{
+                      fontSize: "0.9rem",
+                      lineHeight: "1.5",
+                      counterReset: "line",
+                    }}
+                  >
+                    <code>{JSON.stringify(response)}</code>
+                  </pre>
+                </div>
+              )}
           </div>
 
           {/* old code */}
