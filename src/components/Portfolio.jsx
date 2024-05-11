@@ -1,15 +1,15 @@
 import React from "react";
 import digitalLaundri from "../assets/portfolio/digitalLaundri.png";
 import fileSystem from "../assets/portfolio/fileSystem.png";
-import itemList from "../assets/portfolio/itemList.png"
+import itemList from "../assets/portfolio/itemList.png";
 
 const Portfolio = () => {
   const portfolios = [
     {
       id: 1,
       src: fileSystem,
-      demo:"https://drive.google.com/file/d/1dI6a1Q8j7aUyxnP-y2R_3KZlzi52SUUu/view",
-      code:"https://github.com/TEJASVISJAIN/FileOrganiser",
+      demo: "https://drive.google.com/file/d/1dI6a1Q8j7aUyxnP-y2R_3KZlzi52SUUu/view",
+      code: "https://github.com/TEJASVISJAIN/FileOrganiser",
     },
     {
       id: 2,
@@ -20,10 +20,15 @@ const Portfolio = () => {
     {
       id: 2,
       src: itemList,
-      demo:"",
-      code:"https://github.com/TEJASVISJAIN/ItemListFilterApp",
+      demo: "",
+      code: "https://github.com/TEJASVISJAIN/ItemListFilterApp",
     },
   ];
+
+  const redirectToDemoCode = (link) => {
+    window.open(link, "_blank");
+    return;
+  };
 
   return (
     <div
@@ -47,16 +52,18 @@ const Portfolio = () => {
                 className="rounded-md duration-200 hover:scale-105"
               />
               <div className="flex items-center justify-center">
-                <a href={demo}>
-                <button className="w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105">
+                <button
+                  onClick={(e) => redirectToDemoCode(demo)}
+                  className="w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105"
+                >
                   Demo
                 </button>
-                </a>
-                <a href="https://github.com/TEJASVISJAIN/FileOrganiser">
-                <button className="w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105">
+                <button
+                  onClick={(e) => redirectToDemoCode(code)}
+                  className="w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105"
+                >
                   Code
                 </button>
-                </a>
               </div>
             </div>
           ))}

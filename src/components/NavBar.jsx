@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+
 function NavBar() {
   const [nav, setNav] = useState(false);
 
@@ -31,8 +32,17 @@ function NavBar() {
     },
   ];
 
+  const Link = ({ to, children, ...props }) => (
+    <ScrollLink to={to} offset={-80} {...props}>
+      {children}
+    </ScrollLink>
+  );
+
   return (
-    <div className="flex justify-between flex-row items-center w-full h-20 text-white bg-black px-4 fixed">
+    <div
+      className="flex justify-between flex-row items-center w-full h-20 text-white bg-black px-4 fixed"
+      style={{ zIndex: "10" }}
+    >
       <div>
         <h1 className="text-5xl font-signature ml-2">Tejasvi S Jain</h1>
       </div>
