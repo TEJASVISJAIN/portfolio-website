@@ -3,6 +3,10 @@ import React from "react";
 import linkedinLogo from "../assets/images/linkedin.svg";
 import leetcodeLogo from "../assets/images/leetcode.png";
 const About = () => {
+
+  const goToLinks = (link) =>{
+    window.open(link, "_blank")
+  }
   return (
     <div
       name="about"
@@ -29,10 +33,11 @@ const About = () => {
             className="float-right"
             src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FTEJASVISJAIN%2FTEJASVISJAIN&labelColor=%232ccce4&countColor=%23697689"
             alt="Visitor Badge"
+
           />
 
           <h1 className="text-center text-3xl font-bold mb-4">
-            <a href="https://git.io/typing-svg">
+            <a>
               <img
                 src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=30&pause=500&center=true&vCenter=true&width=435&lines=Hello%2C+There!+%F0%9F%91%8B;This+is+Tejasvi+S+Jain..;Nice+to+meet+you!"
                 alt="Typing SVG"
@@ -42,17 +47,19 @@ const About = () => {
 
           <div className="flex justify-center mb-4">
             <a
-              href="https://www.linkedin.com/in/tejasvisjain/"
+            onClick={e=>goToLinks("https://www.linkedin.com/in/tejasvisjain/")}
               title="LinkedIn Profile"
               className="mr-4 flex items-center"
+              style={{cursor: "pointer"}}
             >
               <img className="w-5 h-5 mr-2" src={linkedinLogo} alt="LinkedIn" />
               LinkedIn
             </a>
             <a
-              href="https://leetcode.com/TEJASVISJAIN/"
+            onClick={e=>goToLinks("https://leetcode.com/TEJASVISJAIN/")}
               title="Leetcode Profile"
               className="flex items-center"
+              style={{cursor: "pointer"}}
             >
               <img className="w-5 h-5 mr-2" src={leetcodeLogo} alt="Leetcode" />
               Leetcode
@@ -73,25 +80,28 @@ const About = () => {
             <br />
             💬 Ask me anything from{" "}
             <a
-              href="https://github.com/TEJASVISJAIN/TEJASVISJAIN/issues"
+            onClick={e=>goToLinks("https://github.com/TEJASVISJAIN/TEJASVISJAIN/issues")}
               title="Issues"
               className="text-blue-500 hover:text-blue-700"
+              style={{cursor: "pointer"}}
             >
               Here
             </a>
             <br />
             📫 How to reach me:{" "}
             <a
-              href="mailto: tejasvisjain0214@gmail.com"
+            onClick={e=>goToLinks("mailto: tejasvisjain0214@gmail.com")}
               className="text-blue-500 hover:text-blue-700"
+              style={{cursor: "pointer"}}
             >
               tejasvisjain0214@gmail.com
             </a>
             <br />
             ✍️ 🧑‍💻Check out my blogs on{" "}
             <a
-              href="https://tejasvisjain.hashnode.dev/"
+            onClick={e=>goToLinks("https://tejasvisjain.hashnode.dev/")}
               className="text-blue-500 hover:text-blue-700"
+              style={{cursor: "pointer"}}
             >
               Hashnode ( blog site launching soon 🤫)
             </a>

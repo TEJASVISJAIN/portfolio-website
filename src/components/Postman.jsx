@@ -55,20 +55,21 @@ const PostmanComponent = () => {
 
   return (
     <div
+      className="bg-gradient-to-b from-gray-800 to-black w-full text-white md:h-screen"
       name="postman"
-      className="bg-gradient-to-b from-gray-800 to-black text-white"
     >
-      <div className="pb-8 max-w-screen-lg mx-auto py-16 px-4">
-        <p className="text-4xl font-bold inline border-b-4 border-gray-500">
+      
+    <div
+      className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full"
+    >
+      <div className="pb-8">
+          <p className="text-4xl font-bold inline border-b-4 border-gray-500">
           Postman
-        </p>
-        <p className="py-6">
-          Put in a GET request API URL and hit send to see the response
-        </p>
-        <p>{"More actions incoming :) "} </p>
-      </div>
+          </p>
+          <p className="py-6">  Put in a GET request API URL and hit send to see the response</p>
+        </div>
       <div
-        className="flex w-full h-screen"
+        className="flex w-full"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -422,6 +423,7 @@ const PostmanComponent = () => {
         {/* this will be the input div for url, method and a submit button */}
       </div>
     </div>
+      </div>
   );
 };
 
