@@ -14,16 +14,16 @@ function App() {
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []); // Run once on component mount
+  }, []); 
 
   useEffect(() => {
     if (timerFinished) {
       const slideOutTimer = setTimeout(() => {
         setShowSplash(false);
-      }, 500); // Adjust the duration to match the slide-out animation duration
+      }, 2000); 
       return () => clearTimeout(slideOutTimer);
     }
-  }, [timerFinished]); // Run when timerFinished changes
+  }, [timerFinished]); 
 
   return (
     <div className="App">
