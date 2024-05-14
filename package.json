@@ -14,6 +14,8 @@
     "react-plx": "^2.1.2",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.0",
+    "react-transition-group": "^4.4.5",
+    "toastr": "^2.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
