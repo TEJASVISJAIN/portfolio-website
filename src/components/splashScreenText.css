@@ -1,0 +1,41 @@
+/* splashScreenText.css */
+
+.hello-text-enter {
+  opacity: 0;
+}
+
+.hello-text-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.hello-text-exit {
+  opacity: 1;
+}
+
+.hello-text-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.slide-out-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-out-enter-active {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.slide-out-exit {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.slide-out-exit-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
