@@ -25,6 +25,7 @@ function Home() {
               to="portfolio"
               smooth
               duration={500}
+              offset={-80}
               className="group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer"
             >
               Portfolio

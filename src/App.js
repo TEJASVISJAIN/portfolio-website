@@ -14,21 +14,21 @@ function App() {
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (timerFinished) {
       const slideOutTimer = setTimeout(() => {
         setShowSplash(false);
-      }, 2000); 
+      }, 2000);
       return () => clearTimeout(slideOutTimer);
     }
-  }, [timerFinished]); 
+  }, [timerFinished]);
 
   return (
     <div className="App">
       <Analytics />
-      {showSplash && <Splashscreen slideOut={timerFinished} />} {/* Pass slideOut prop */}
+      {/* {showSplash && <Splashscreen slideOut={timerFinished} />}  */}
       <Base />
     </div>
   );
