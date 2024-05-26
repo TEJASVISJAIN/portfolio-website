@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Analytics />
-      {/* {showSplash && <Splashscreen slideOut={timerFinished} />}  */}
+      {showSplash && <Splashscreen slideOut={timerFinished} />}
       <Base />
     </div>
   );
