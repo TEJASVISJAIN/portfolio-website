@@ -1,4 +1,77 @@
-.fade-out {
+/* Splash Screen Animations */
+.splash-enter {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transform: scale(0.9);
+}
+
+.splash-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 800ms ease-out, transform 800ms ease-out;
+}
+
+.splash-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.splash-exit-active {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 800ms ease-in, transform 800ms ease-in;
+}
+
+/* Content animations */
+.content-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.content-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.content-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+/* Floating particles animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Pulse animation for background elements */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
 }
