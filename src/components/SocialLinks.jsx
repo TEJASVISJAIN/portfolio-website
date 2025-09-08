@@ -110,17 +110,6 @@ function SocialLinks() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-white/20">
-          <div className="text-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 Tejasvi S Jain. Built with React and lots of ☕
-            </p>
-            <p className="text-gray-500 text-xs mt-2">
-              Designed and developed with passion for creating amazing digital experiences
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

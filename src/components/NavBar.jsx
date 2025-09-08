@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link as ScrollLink } from "react-scroll";
+import { Link, useLocation } from "react-router-dom";
 
 function NavBar() {
   const [nav, setNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const links = [
-    { id: 1, link: "home", label: "Home" },
-    { id: 2, link: "about", label: "About" },
-    { id: 3, link: "portfolio", label: "Portfolio" },
-    { id: 4, link: "postman", label: "Postman" },
-    { id: 5, link: "experience", label: "Experience" },
-    { id: 6, link: "contact", label: "Contact" },
+    { id: 1, path: "/", label: "Home" },
+    { id: 2, path: "/portfolio", label: "Portfolio" },
+    { id: 3, path: "/experience", label: "Experience" },
+    { id: 4, path: "/contact", label: "Contact" },
   ];
 
   useEffect(() => {
@@ -64,11 +63,6 @@ function NavBar() {
     };
   }, [nav]);
 
-  const Link = ({ to, children, ...props }) => (
-    <ScrollLink to={to} offset={-80} {...props}>
-      {children}
-    </ScrollLink>
-  );
 
   return (
     <div
@@ -82,27 +76,33 @@ function NavBar() {
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Tejasvi S Jain
-            </h1>
-      </div>
+            <Link to="/" className="block">
+              <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                Tejasvi S Jain
+              </h1>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-8">
-            {links.map(({ id, link, label }) => (
+            {links.map(({ id, path, label }) => (
               <li key={id}>
                 <Link
-                  to={link}
-                  smooth
-                  duration={500}
-                  className="relative text-gray-300 hover:text-white transition-colors duration-300 font-medium group"
+                  to={path}
+                  className={`relative transition-colors duration-300 font-medium group ${
+                    location.pathname === path
+                      ? "text-white"
+                      : "text-gray-300 hover:text-white"
+                  }`}
                 >
                   {label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-300 ${
+                    location.pathname === path ? "w-full" : "w-0 group-hover:w-full"
+                  }`}></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           {/* Mobile Menu Button */}
       <div
@@ -168,7 +168,7 @@ function NavBar() {
 
           {/* Navigation Links */}
           <div className="space-y-8 text-center">
-            {links.map(({ id, link, label }, index) => (
+            {links.map(({ id, path, label }, index) => (
               <div
                 key={id}
                 className={`transform transition-all duration-500 ${
@@ -178,15 +178,19 @@ function NavBar() {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-            <Link
-              to={link}
-              smooth
-              duration={500}
+                <Link
+                  to={path}
                   onClick={() => setNav(false)}
-                  className="group relative text-4xl font-bold text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 block"
+                  className={`group relative text-4xl font-bold transition-all duration-300 hover:scale-110 block ${
+                    location.pathname === path
+                      ? "text-white"
+                      : "text-gray-300 hover:text-white"
+                  }`}
                 >
                   <span className="relative z-10">{label}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 opacity-0 group-hover:opacity-20 rounded-lg blur-sm transition-opacity duration-300"></div>
+                  <div className={`absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-lg blur-sm transition-opacity duration-300 ${
+                    location.pathname === path ? "opacity-20" : "opacity-0 group-hover:opacity-20"
+                  }`}></div>
                 </Link>
               </div>
             ))}

@@ -1,6 +1,11 @@
 import { Analytics } from "@vercel/analytics/react";
 import { useState, useEffect } from "react";
-import Base from "./components/Base";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/NavBar";
+import HomePage from "./pages/HomePage";
+import PortfolioPage from "./pages/PortfolioPage";
+import ExperiencePage from "./pages/ExperiencePage";
+import ContactPage from "./pages/ContactPage";
 import "./components/styles/splash.css"; // Import the CSS file
 import Splashscreen from "./components/Splash";
 
@@ -29,7 +34,15 @@ function App() {
     <div className="App">
       <Analytics />
       {showSplash && <Splashscreen slideOut={timerFinished} />}
-      <Base />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
