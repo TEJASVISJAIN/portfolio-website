@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBar";
+import ScrollToTop from "./components/ScrollToTop";
 import HomePage from "./pages/HomePage";
 import PortfolioPage from "./pages/PortfolioPage";
 import ExperiencePage from "./pages/ExperiencePage";
@@ -35,6 +36,7 @@ function App() {
       <Analytics />
       {showSplash && <Splashscreen slideOut={timerFinished} />}
       <Router>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />

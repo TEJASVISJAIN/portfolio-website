@@ -1,7 +1,7 @@
 import React from "react";
 import HeroImage from "../assets/heroImage.png";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -34,10 +34,7 @@ function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
-                to="portfolio"
-                smooth
-                duration={500}
-                offset={-80}
+                to="/portfolio"
                 className="group text-white w-fit px-6 py-3 sm:px-8 sm:py-4 flex items-center rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 cursor-pointer shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105"
               >
                 <span className="font-semibold text-base sm:text-lg">View Portfolio</span>
@@ -47,10 +44,7 @@ function Home() {
               </Link>
               
               <Link
-                to="contact"
-                smooth
-                duration={500}
-                offset={-80}
+                to="/contact"
                 className="text-white w-fit px-6 py-3 sm:px-8 sm:py-4 flex items-center rounded-full border-2 border-cyan-400 cursor-pointer hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 hover:scale-105"
               >
                 <span className="font-semibold text-base sm:text-lg">Get In Touch</span>
