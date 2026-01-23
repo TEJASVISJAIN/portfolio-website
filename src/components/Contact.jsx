@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPaperPlane, FaUser, FaEnvelope, FaComment } from "react-icons/fa";
+import { FaPaperPlane } from "react-icons/fa";
 import toastr from "toastr";
 
 const Contact = () => {
@@ -19,155 +19,154 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Check if all fields are filled
     if (formData.name.trim() === "" || formData.email.trim() === "" || formData.message.trim() === "") {
-      toastr.error("Please fill in all fields", "", { closeButton: true, positionClass: "toast-bottom-right", timeOut: 5000 });
+      toastr.error("Please fill in all fields!", "", { closeButton: true, positionClass: "toast-bottom-right", timeOut: 5000 });
       setIsSubmitting(false);
       return;
     }
 
-      try {
-        const response = await fetch("https://getform.io/f/30e51506-7a4a-42e4-aa7e-4d83bd7bf403", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-        });
+    try {
+      const response = await fetch("https://getform.io/f/30e51506-7a4a-42e4-aa7e-4d83bd7bf403", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
 
-        if (response.ok) {
-        toastr.success("Message sent successfully! I'll get back to you soon.", "", { closeButton: true, positionClass: "toast-bottom-right", timeOut: 5000 });
+      if (response.ok) {
+        toastr.success("Message sent successfully!", "", { closeButton: true, positionClass: "toast-bottom-right", timeOut: 5000 });
         setFormData({ name: "", email: "", message: "" });
-        } else {
-        toastr.error("Failed to send message. Please try again later.", "", { closeButton: true, positionClass: "toast-bottom-right", timeOut: 5000 });
+      } else {
+        toastr.error("Failed to send message!", "", { closeButton: true, positionClass: "toast-bottom-right", timeOut: 5000 });
       }
     } catch (error) {
-      toastr.error("An error occurred. Please try again later.", "", { closeButton: true, positionClass: "toast-bottom-right", timeOut: 5000 });
+      toastr.error("An error occurred!", "", { closeButton: true, positionClass: "toast-bottom-right", timeOut: 5000 });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div
-      name="contact"
-      className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 w-full text-white py-20"
-    >
-      <div className="max-w-screen-xl mx-auto px-4">
-        {/* Section Header */}
+    <div name="contact" className="bg-comic-paper w-full min-h-screen py-20 relative overflow-hidden">
+      <div className="absolute top-20 left-10 font-comic text-7xl text-comic-green opacity-10 transform -rotate-12">
+        CONTACT!
+      </div>
+      <div className="absolute bottom-20 right-10 font-comic text-7xl text-comic-purple opacity-10 transform rotate-12">
+        CONNECT!
+      </div>
+
+      <div className="max-w-screen-lg mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Get In Touch
-            </span>
+          <h2 className="font-comic text-6xl md:text-7xl text-comic-green mb-4" style={{
+            textShadow: '6px 6px 0px #000, -3px -3px 0px #FFE135'
+          }}>
+            GET IN TOUCH!
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind or just want to chat? I'd love to hear from you!
-          </p>
+          <div className="h-2 bg-black max-w-md mx-auto mb-6"></div>
+          
+          <div className="speech-bubble bg-white max-w-2xl mx-auto">
+            <p className="font-speech text-xl text-black">
+              Got an <strong className="text-comic-red">AWESOME</strong> idea? 
+              Let's make it <strong className="text-comic-blue">HAPPEN!</strong> 🚀
+            </p>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-cyan-400">Let's Connect</h3>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                I'm always interested in new opportunities and exciting projects. 
-                Whether you have a question, want to collaborate, or just want to say hi, 
-                feel free to reach out!
-              </p>
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="space-y-6">
+            <div className="comic-panel-yellow p-8 animate-slide-in-left">
+              <h3 className="font-comic text-3xl text-black mb-4">WHY CONTACT ME?</h3>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-3xl">💼</span>
+                  <div>
+                    <h4 className="font-comic text-xl text-comic-red">JOB OPPORTUNITIES</h4>
+                    <p className="font-speech text-black">Looking for a developer? Let's talk!</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-3xl">🤝</span>
+                  <div>
+                    <h4 className="font-comic text-xl text-comic-blue">COLLABORATION</h4>
+                    <p className="font-speech text-black">Have a project idea? Count me in!</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-3xl">💬</span>
+                  <div>
+                    <h4 className="font-comic text-xl text-comic-green">JUST SAY HI</h4>
+                    <p className="font-speech text-black">Want to chat? Drop a message!</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <div className="p-3 bg-cyan-500/20 rounded-full">
-                  <FaEnvelope className="text-cyan-400" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-white">Email</h4>
-                  <p className="text-gray-300">tejasvisjain0214@gmail.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <div className="p-3 bg-purple-500/20 rounded-full">
-                  <FaUser className="text-purple-400" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-white">Response Time</h4>
-                  <p className="text-gray-300">Usually within 24 hours</p>
-                </div>
-              </div>
+            <div className="thought-bubble bg-white p-6">
+              <p className="font-handwriting text-lg text-black text-center">
+                I usually respond within 24 hours! ⏰
+              </p>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+          <div className="comic-panel bg-white p-8 animate-slide-in-right">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <FaUser className="text-gray-400" size={16} />
-                </div>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
+              <div>
+                <label className="font-comic text-xl text-black mb-2 block">YOUR NAME!</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your Name"
-                  className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all duration-300"
-                  required
+                  placeholder="Enter your name..."
+                  className="w-full px-4 py-3 border-4 border-black rounded-lg font-speech text-lg focus:outline-none focus:border-comic-blue transition-colors"
                 />
               </div>
 
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <FaEnvelope className="text-gray-400" size={16} />
-                </div>
-            <input
+              <div>
+                <label className="font-comic text-xl text-black mb-2 block">YOUR EMAIL!</label>
+                <input
                   type="email"
-              name="email"
-              value={formData.email}
+                  name="email"
+                  value={formData.email}
                   onChange={handleChange}
-                  placeholder="Your Email"
-                  className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all duration-300"
-                  required
+                  placeholder="your@email.com"
+                  className="w-full px-4 py-3 border-4 border-black rounded-lg font-speech text-lg focus:outline-none focus:border-comic-blue transition-colors"
                 />
               </div>
 
-              <div className="relative">
-                <div className="absolute top-4 left-4 pointer-events-none">
-                  <FaComment className="text-gray-400" size={16} />
-                </div>
-            <textarea
-              name="message"
-              value={formData.message}
+              <div>
+                <label className="font-comic text-xl text-black mb-2 block">YOUR MESSAGE!</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
                   onChange={handleChange}
-                  placeholder="Your Message"
-                  rows="6"
-                  className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all duration-300 resize-none"
-                  required
+                  placeholder="Tell me what's on your mind..."
+                  rows="5"
+                  className="w-full px-4 py-3 border-4 border-black rounded-lg font-speech text-lg focus:outline-none focus:border-comic-blue transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-white font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full comic-button comic-button-red flex items-center justify-center gap-3 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <FaPaperPlane size={18} />
-                    <span>Send Message</span>
-                  </>
-                )}
-            </button>
-          </form>
+                <FaPaperPlane size={20} />
+                <span className="text-xl">{isSubmitting ? "SENDING..." : "SEND MESSAGE!"}</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <div className="inline-block comic-panel-blue p-6">
+            <p className="font-speech text-white text-lg">
+              Or email me directly at{" "}
+              <a href="mailto:tejasvisjain0214@gmail.com" className="font-comic text-comic-yellow hover:text-comic-green transition-colors underline">
+                tejasvisjain0214@gmail.com
+              </a>
+            </p>
           </div>
         </div>
       </div>

@@ -1,166 +1,62 @@
 import React from "react";
-import { FaCode, FaServer, FaDatabase, FaCloud, FaTools, FaBrain, FaMobile } from "react-icons/fa";
-
-import html from "../assets/html.png";
-import css from "../assets/css.png";
-import javascript from "../assets/javascript.png";
-import reactImage from "../assets/react.png";
-import github from "../assets/github.png";
-import tailwind from "../assets/tailwind.png";
-import postman from "../assets/postman.png";
-import gcp from "../assets/gcp.webp";
-import angular from "../assets/angular.png";
 
 const Experience = () => {
-  const techCategories = [
-    {
-      id: 1,
-      title: "Frontend Development",
-      icon: <FaCode className="text-cyan-400" size={24} />,
-      description: "Building responsive and interactive user interfaces",
-      technologies: [
-        { src: reactImage, name: "React.JS" },
-        { src: angular, name: "Angular" },
-        { name: "Next.js" },
-        { name: "React Native" },
-        { name: "TypeScript" },
-        { name: "Redux" },
-        { name: "Vite" },
-        { src: html, name: "HTML5" },
-        { src: css, name: "CSS3" },
-        { name: "SCSS" },
-        { src: tailwind, name: "Tailwind CSS" },
-        { src: javascript, name: "JavaScript" },
-        { name: "Webpack" },
-      ]
-    },
-    {
-      id: 2,
-      title: "Backend & APIs",
-      icon: <FaServer className="text-purple-400" size={24} />,
-      description: "Server-side development and API integration",
-      technologies: [
-        { name: "Node.js" },
-        { name: "Fast API" },
-        { name: "RESTful APIs" },
-        { name: "GraphQL" },
-        { src: postman, name: "Postman" },
-        { name: "Docker" },
-        { name: "Redis" },
-        { name: "Kafka" },
-      ]
-    },
-    {
-      id: 3,
-      title: "GenAI & AI/ML",
-      icon: <FaBrain className="text-pink-400" size={24} />,
-      description: "Artificial Intelligence and Machine Learning technologies",
-      technologies: [
-        { name: "GenAI" },
-        { name: "Langchain" },
-        { name: "AI Integration" },
-        { name: "Machine Learning" },
-      ]
-    },
-    {
-      id: 4,
-      title: "Cloud & DevOps",
-      icon: <FaCloud className="text-green-400" size={24} />,
-      description: "Cloud platforms and deployment strategies",
-      technologies: [
-        { src: gcp, name: "Google Cloud Platform" },
-        { name: "Kubernetes" },
-        { name: "CI/CD" },
-        { name: "CDN" },
-        { name: "Scalable Solutions" },
-      ]
-    },
-    {
-      id: 5,
-      title: "Database & Storage",
-      icon: <FaDatabase className="text-orange-400" size={24} />,
-      description: "Database management and data storage solutions",
-      technologies: [
-        { name: "MySQL" },
-        { name: "Redis" },
-        { name: "Database Design" },
-        { name: "ACID Properties" },
-      ]
-    },
-    {
-      id: 6,
-      title: "Development Practices",
-      icon: <FaTools className="text-blue-400" size={24} />,
-      description: "Software development methodologies and best practices",
-      technologies: [
-        { src: github, name: "GitHub" },
-        { name: "Agile Development" },
-        { name: "Algorithms" },
-        { name: "Low-Level Design" },
-        { name: "High-Level Design" },
-        { name: "SOLID Principles" },
-        { name: "Vibe Coding" },
-        { name: "Cursor" },
-      ]
-    }
+  const skills = [
+    { category: "FRONTEND", items: ["React", "Angular", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"], color: "comic-blue" },
+    { category: "BACKEND", items: ["Node.js", "Express", "FastAPI", "MongoDB", "PostgreSQL", "Redis"], color: "comic-red" },
+    { category: "AI/ML", items: ["GenAI", "Python", "TensorFlow", "OpenAI", "LangChain", "Hugging Face"], color: "comic-green" },
+    { category: "TOOLS", items: ["Git", "Docker", "Postman", "VS Code", "GitHub", "GCP", "AWS"], color: "comic-purple" },
   ];
 
   return (
-    <div
-      name="experience"
-      className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 w-full text-white py-20"
-    >
-      <div className="max-w-screen-xl mx-auto px-4">
-        {/* Section Header */}
+    <div name="experience" className="bg-comic-paper w-full min-h-screen py-20 relative overflow-hidden">
+      <div className="absolute top-10 left-10 font-comic text-8xl text-comic-red opacity-10 transform -rotate-12">
+        CODE!
+      </div>
+      <div className="absolute bottom-10 right-10 font-comic text-8xl text-comic-blue opacity-10 transform rotate-12">
+        BUILD!
+      </div>
+
+      <div className="max-w-screen-xl mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Tech Stack & Experience
-            </span>
+          <h2 className="font-comic text-6xl md:text-7xl text-comic-purple mb-4" style={{
+            textShadow: '6px 6px 0px #000, -3px -3px 0px #FFE135'
+          }}>
+            MY SUPERPOWERS!
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Technologies and tools I work with to build amazing digital experiences
-          </p>
+          <div className="h-2 bg-black max-w-md mx-auto mb-6"></div>
+          
+          <div className="speech-bubble bg-white max-w-2xl mx-auto">
+            <p className="font-speech text-xl text-black">
+              These are the <strong className="text-comic-red">AMAZING</strong> technologies I use to 
+              build <strong className="text-comic-blue">INCREDIBLE</strong> things! 💪
+            </p>
+          </div>
         </div>
 
-        {/* Tech Categories */}
-        <div className="space-y-12">
-          {techCategories.map((category) => (
-            <div key={category.id} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:border-cyan-400/50 transition-all duration-300">
-              <div className="flex items-center space-x-4 mb-6">
-                {category.icon}
-                <div>
-                  <h3 className="text-2xl font-bold text-white">{category.title}</h3>
-                  <p className="text-gray-300">{category.description}</p>
-                </div>
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {skills.map(({ category, items, color }, index) => (
+            <div
+              key={category}
+              className={`comic-panel bg-white p-8 hover:rotate-2 transition-all duration-300 animate-zoom-in`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="mb-6">
+                <h3 className={`font-comic text-3xl text-${color} mb-2`} style={{
+                  textShadow: '3px 3px 0px #000'
+                }}>
+                  {category}!
+                </h3>
+                <div className={`h-1 bg-${color} w-20`}></div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                {category.technologies.map((tech, index) => (
+              <div className="flex flex-wrap gap-3">
+                {items.map((skill, idx) => (
                   <div
-                    key={index}
-                    className="group bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
+                    key={idx}
+                    className={`px-4 py-2 bg-${color} text-white font-comic border-3 border-black rounded-lg shadow-comic hover:scale-110 transition-transform duration-200 cursor-pointer`}
                   >
-                    <div className="flex flex-col items-center space-y-3">
-                      <div className="relative">
-                        {tech.src ? (
-                          <img 
-                            src={tech.src} 
-                            alt={tech.name} 
-                            className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
-                          />
-                        ) : (
-                          <div className="w-10 h-10 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span className="text-cyan-400 font-bold text-sm">{tech.name.charAt(0)}</span>
-                          </div>
-                        )}
-                        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      </div>
-                      <div className="text-center">
-                        <h4 className="font-semibold text-white text-xs leading-tight">{tech.name}</h4>
-                      </div>
-                    </div>
+                    {skill}
                   </div>
                 ))}
               </div>
@@ -168,35 +64,46 @@ const Experience = () => {
           ))}
         </div>
 
-        {/* Experience Summary */}
-        <div className="mt-16 text-center">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-            <h3 className="text-2xl font-bold mb-4 text-cyan-400">Full-Stack Expertise</h3>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-              I specialize in building scalable, modern applications using cutting-edge technologies. 
-              From frontend frameworks to AI integration, cloud deployment to database design, 
-              I bring comprehensive technical expertise to every project.
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="comic-panel-yellow p-6 text-center animate-slide-up">
+            <div className="text-5xl mb-3">🎯</div>
+            <h4 className="font-comic text-2xl text-black mb-2">PROBLEM SOLVER!</h4>
+            <p className="font-speech text-black">
+              I love tackling complex challenges and finding creative solutions!
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-cyan-400">40+</div>
-                <div className="text-gray-300 text-sm">Technologies</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-400">6</div>
-                <div className="text-gray-300 text-sm">Skill Categories</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-400">AI</div>
-                <div className="text-gray-300 text-sm">GenAI Expert</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-400">∞</div>
-                <div className="text-gray-300 text-sm">Innovation</div>
-              </div>
-            </div>
+          </div>
+
+          <div className="comic-panel-blue p-6 text-center animate-slide-up" style={{animationDelay: '0.1s'}}>
+            <div className="text-5xl mb-3">🚀</div>
+            <h4 className="font-comic text-2xl text-white mb-2">FAST LEARNER!</h4>
+            <p className="font-speech text-white">
+              Always exploring new technologies and staying up-to-date!
+            </p>
+          </div>
+
+          <div className="comic-panel-red p-6 text-center animate-slide-up" style={{animationDelay: '0.2s'}}>
+            <div className="text-5xl mb-3">🤝</div>
+            <h4 className="font-comic text-2xl text-white mb-2">TEAM PLAYER!</h4>
+            <p className="font-speech text-white">
+              Collaboration and communication are my secret weapons!
+            </p>
           </div>
         </div>
+
+        <div className="mt-16 text-center">
+          <div className="thought-bubble bg-white inline-block p-8">
+            <p className="font-handwriting text-2xl text-black">
+              💭 The best way to predict the future is to code it!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="fixed top-1/2 left-5 opacity-10 pointer-events-none font-comic text-7xl text-comic-blue transform -rotate-45 animate-bounce-comic">
+        ⚡
+      </div>
+      <div className="fixed top-1/2 right-5 opacity-10 pointer-events-none font-comic text-7xl text-comic-red transform rotate-45 animate-bounce-comic" style={{animationDelay: '0.5s'}}>
+        💻
       </div>
     </div>
   );
